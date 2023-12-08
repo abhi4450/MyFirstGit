@@ -25,3 +25,15 @@ items[2].style.backgroundColor = "green";
 for (let item of items) {
   item.style.fontWeight = "bold";
 }
+
+let ul = document.querySelector(".list-group");
+
+let newLi = document.createElement("li");
+
+newLi.textContent = "Item 5";
+
+newLi.classList.add("new-list-group-item");
+ul.appendChild(newLi);
+
+newLi.style.listStyleType = "none";
+newLi.style.backgroundColor = "red";
