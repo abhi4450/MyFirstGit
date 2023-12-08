@@ -37,3 +37,26 @@ ul.appendChild(newLi);
 
 newLi.style.listStyleType = "none";
 newLi.style.backgroundColor = "red";
+
+// Make the 2nd item have green background color
+// Make the 3rd item invisible
+
+let secondLi = document.querySelector(".list-group-item:nth-child(2)");
+
+secondLi.style.backgroundColor = "green";
+
+let thirdLi = document.querySelector("#third");
+
+thirdLi.style.display = "none";
+
+//QuerySelectorAll
+
+let secondListItem = document.querySelectorAll(".list-group-item")[1];
+
+secondListItem.style.color = "white";
+
+let odds = document.querySelectorAll(".list-group-item:nth-child(odd)");
+
+for (let i = 0; i < odds.length; i++){
+    odds[i].style.backgroundColor = "green";
+}
