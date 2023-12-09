@@ -20,6 +20,15 @@ function addItem(e) {
   let newItem = document.getElementById("item").value;
   let newDesc = document.getElementById("description").value;
 
+  // Create an object to represent the submitted data
+  var submittedData = {
+    item: newItem,
+    description: newDesc,
+  };
+  //storing the submittedData in the local storage
+  localStorage.setItem("userSubmittedData", JSON.stringify(submittedData));
+  setTimeout(() => localStorage.removeItem('userSubmittedData'), 5000);
+
   //Create new li element
 
   let li = document.createElement("li");
