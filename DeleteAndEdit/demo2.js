@@ -35,7 +35,7 @@ function addItem(e) {
   existingData.push(submittedData);
   localStorage.setItem("userSubmittedData", JSON.stringify(existingData));
 
-  setTimeout(() => localStorage.removeItem("userSubmittedData"), 5000);
+  // setTimeout(() => localStorage.removeItem("userSubmittedData"), 5000);
 
   //Create new li element
 
