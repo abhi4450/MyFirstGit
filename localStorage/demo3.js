@@ -1,7 +1,7 @@
 let dataList = document.getElementById("dataList");
 
 // Delete event
-dataList.addEventListener("click", removeItem);
+dataList.addEventListener("click", removeItemFromListAndStorage);
 
 document
   .getElementById("submitButton")
@@ -42,18 +42,33 @@ function displayData(data) {
   deleteBtn.className = "btn btn-danger btn-sm float-end delete";
   deleteBtn.appendChild(document.createTextNode("delete"));
 
-  // Add click event listener to the delete button
-  deleteBtn.addEventListener("click", function () {
-    // Find the index of the item in the list
-    var index = Array.from(dataList.children).indexOf(listItem);
+  // Create a Edit Button
+  let editBtn = document.createElement("button");
+  editBtn.className = "btn btn-primary btn-sm float-end me-1 edit";
+  editBtn.appendChild(document.createTextNode("edit"));
 
-    // Remove the item from both the list and local storage
-    removeItem(index);
+  // Add click event listener to the delete button
+
+  deleteBtn.addEventListener("click", function () {
+    removeItemFromListAndStorage(listItem);
   });
 
+  //   deleteBtn.addEventListener("click", function () {
+  //     // Find the index of the item in the list
+  //     var index = Array.from(dataList.children).indexOf(listItem);
+
+  //     // Remove the item from both the list and local storage
+  //     removeItem(index);
+  //   });
+
+  // Add click event listener to the edit button
+  editBtn.addEventListener("click", function () {
+    editItemForm(data, listItem);
+  });
   // Append the delete button to the <li> element
   listItem.appendChild(deleteBtn);
-
+  //Append the Edit button to the <li> element
+  listItem.appendChild(editBtn);
   // Append the <li> element to the <ul>
   dataList.appendChild(listItem);
 }
@@ -77,23 +92,50 @@ function storeDataInLocalStorage(data) {
   localStorage.setItem("userSubmittedData", JSON.stringify(existingData));
 }
 
-function removeItem(index) {
+function removeItemFromListAndStorage(listItem) {
   // Remove the item from the list
-  var listItem = dataList.children[index];
   dataList.removeChild(listItem);
 
-  // Remove the item from local storage
-  removeDataFromLocalStorage(index);
-}
-
-function removeDataFromLocalStorage(index) {
   // Fetch existing data from local storage
   var existingData =
     JSON.parse(localStorage.getItem("userSubmittedData")) || [];
 
-  // Remove the data from the array
+  // Find the index of the item in the array
+  var index = Array.from(dataList.children).indexOf(listItem);
+
+  // Remove the item from local storage
   existingData.splice(index, 1);
 
   // Store the updated data back in local storage
   localStorage.setItem("userSubmittedData", JSON.stringify(existingData));
 }
+// function removeItem(index) {
+//   // Remove the item from the list
+//   var listItem = dataList.children[index];
+//   dataList.removeChild(listItem);
+
+//   // Remove the item from local storage
+//   removeDataFromLocalStorage(index);
+// }
+
+function editItemForm(data, listItem) {
+  // Populate the form fields with the existing data
+  document.getElementById("name").value = data.name;
+  document.getElementById("email").value = data.email;
+  document.getElementById("number").value = data.number;
+
+  // Remove the item from the list and local storage
+  removeItemFromListAndStorage(listItem);
+}
+
+// function removeDataFromLocalStorage(index) {
+//   // Fetch existing data from local storage
+//   var existingData =
+//     JSON.parse(localStorage.getItem("userSubmittedData")) || [];
+
+//   // Remove the data from the array
+//   existingData.splice(index, 1);
+
+//   // Store the updated data back in local storage
+//   localStorage.setItem("userSubmittedData", JSON.stringify(existingData));
+// }
