@@ -33,34 +33,64 @@
       <div id="main" class="card card-body">
         <h2 class="title">Add Items</h2>
         <form id="addForm" class="form-inline mb-3">
-          <input type="text" class="form-control mr-2" id="item" />
-          <input type="submit" class="btn btn-dark" value="Submit" />
+          <div class="row g-2">
+            <div class="col-md">
+              <input
+                type="text"
+                class="form-control"
+                id="item"
+                placeholder="Item"
+              />
+            </div>
+            <div class="col-md">
+              <input
+                type="text"
+                class="form-control"
+                id="description"
+                placeholder="Description"
+              />
+            </div>
+            <div class="col-md">
+              <input
+                type="submit"
+                class="btn btn-outline-success"
+                value="Submit"
+              />
+            </div>
+          </div>
+          <!-- <input type="text" class="form-control me-2" id="item" />
+          <input type="text" class="form-control me-2" id="description" />
+          <input
+            type="submit"
+            class="btn btn-outline-success mt-1"
+            value="Submit"
+          /> -->
         </form>
         <h2 class="title">Items</h2>
         <ul id="items" class="list-group">
           <li class="list-group-item">
-            Item 1
+            Item 1 pizza
             <button class="btn btn-danger btn-sm float-end delete">X</button>
             <button class="btn btn-primary btn-sm float-end me-1 edit">
               edit
             </button>
           </li>
           <li class="list-group-item">
-            Item 2
+            Item 2 apple
             <button class="btn btn-danger btn-sm float-end delete">X</button>
             <button class="btn btn-primary btn-sm float-end me-1 edit">
               edit
             </button>
           </li>
           <li class="list-group-item">
-            Item 3
+            Item 3 coke
             <button class="btn btn-danger btn-sm float-end delete">X</button>
             <button class="btn btn-primary btn-sm float-end me-1 edit">
               edit
             </button>
           </li>
           <li class="list-group-item">
-            Item 4
+            Item 4 samosa
             <button class="btn btn-danger btn-sm float-end delete">X</button>
             <button class="btn btn-primary btn-sm float-end me-1 edit">
               edit

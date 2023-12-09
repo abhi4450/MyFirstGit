@@ -17,7 +17,8 @@ function addItem(e) {
 
   //Get input value
 
-  let newItem = document.getElementById("item");
+  let newItem = document.getElementById("item").value;
+  let newDesc = document.getElementById("description").value;
 
   //Create new li element
 
@@ -29,7 +30,9 @@ function addItem(e) {
 
   //Add text node with input value
 
-  li.appendChild(document.createTextNode(newItem.value));
+  li.appendChild(document.createTextNode(newItem));
+  li.appendChild(document.createTextNode(" "));
+  li.appendChild(document.createTextNode(newDesc));
 
   //Create delete buttom element
 
@@ -88,12 +91,24 @@ function filterItems(e) {
 
   //Convert to an array
 
-  Array.from(items).forEach(function (item) {
-    let itemName = item.textContent;
-    if (itemName.toLowerCase().indexOf(text) != -1) {
+  let ArrayList = Array.from(items);
+
+  ArrayList.forEach((item) => {
+    let itemName = item.firstChild.textContent.toLowerCase();
+    let descName = item.lastChild.textContent.toLowerCase();
+    if (itemName.indexOf(text) != -1 || descName.indexOf(text) != -1) {
       item.style.display = "block";
     } else {
       item.style.display = "none";
     }
   });
+
+  // Array.from(items).forEach(function (item) {
+  //   let itemName = item.textContent;
+  //   if (itemName.toLowerCase().indexOf(text) != -1) {
+  //     item.style.display = "block";
+  //   } else {
+  //     item.style.display = "none";
+  //   }
+  // });
 }
