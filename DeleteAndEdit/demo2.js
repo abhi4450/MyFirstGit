@@ -25,9 +25,17 @@ function addItem(e) {
     item: newItem,
     description: newDesc,
   };
+  //fetching the exsiting data from the local storage
+  let existingData = JSON.parse(localStorage.getItem("userSubmittedData"));
+
+  // Ensure existingData is an array, initialize as an empty array if null
+  existingData = Array.isArray(existingData) ? existingData : [];
+
   //storing the submittedData in the local storage
-  localStorage.setItem("userSubmittedData", JSON.stringify(submittedData));
-  setTimeout(() => localStorage.removeItem('userSubmittedData'), 5000);
+  existingData.push(submittedData);
+  localStorage.setItem("userSubmittedData", JSON.stringify(existingData));
+
+  setTimeout(() => localStorage.removeItem("userSubmittedData"), 5000);
 
   //Create new li element
 
