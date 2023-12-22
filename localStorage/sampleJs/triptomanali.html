@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const buyaCar = async () => {
+        console.log("buy a car");
+      };
+      const planAtrip = async () => {
+        console.log("plan a trip");
+      };
+      const reachManali = async () => {
+        console.log("reached manali");
+      };
+      const gotofamousMountain = async () => {
+        console.log("go to famous mountain");
+      };
+
+      async function print(cb) {
+        await buyaCar();
+        await planAtrip();
+        await reachManali();
+        await gotofamousMountain();
+        if (cb) console.log("The trip has come to an end.");
+      }
+
+      print((value) => {});
+    </script>
+  </body>
+</html>
